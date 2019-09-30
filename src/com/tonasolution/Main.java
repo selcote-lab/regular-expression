@@ -1,5 +1,8 @@
 package com.tonasolution;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -39,5 +42,22 @@ public class Main {
         System.out.println(newAlphanumeric.replaceAll("\\w", "X"));
         System.out.println(newAlphanumeric.replaceAll("\\W", "X"));
         System.out.println(newAlphanumeric.replaceAll("\\b", "X"));
+
+        String thirdAlphanumericsString = "abcDeF12Ghhiiiijk199";
+        System.out.println(thirdAlphanumericsString.replaceAll("^abcDe{2}", "YYY"));
+        System.out.println(thirdAlphanumericsString.replaceAll("^abcDe+", "YYY"));
+        System.out.println(thirdAlphanumericsString.replaceAll("^abcDe*", "YYY"));
+        System.out.println(thirdAlphanumericsString.replaceAll("^abcDe{2,3}", "yyy"));
+        System.out.println(thirdAlphanumericsString.replaceAll("a+b*c", "yyy"));
+
+        StringBuilder htmlText = new StringBuilder("<h1>My Heading</h1>");
+        htmlText.append("<h2>Sub-heading</h2>");
+        htmlText.append("<p>This is a paragraph about something </p>");
+        htmlText.append("<p>This is a another paragraph about something else </p>");
+
+        String h2Pattern = ".*<h2>.*";
+        Pattern pattern = Pattern.compile(h2Pattern);
+        Matcher matcher = pattern.matcher(htmlText);
+        System.out.println(matcher.matches());
     }
 }
